@@ -1,0 +1,25 @@
+<%= form_for(@garage) do |f| %>
+  <% if @garage.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@garage.errors.count, "error") %> prohibited this garage from being saved:</h2>
+
+      <ul>
+      <% @garage.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :space_number %><br>
+    <%= f.number_field :space_number %>
+  </div>
+  <div class="field">
+    <%= f.label :house_id %><br>
+      <%= select(:owner, :owner_id, @houses_for_select)  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

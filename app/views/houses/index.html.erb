@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Houses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Owner</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+        <td>
+          <a href="/houses/<%= house.id %>">
+            <%= house.address %>
+          </a>
+        </td>
+        <td>
+          <a href="/owners/<%= house.owner.id %>">
+            <%= house.owner.full_name %>
+          </a>
+        </td>
+        <td><%= link_to 'Edit', edit_house_path(house) %></td>
+        <td><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New House', new_house_path %>
+
+
+<h4><em>Go back to the <a href="/">Owners</a> homepage!</em></h4>
+<h4><em>Go back to the <a href="/cars">Cars</a> homepage!</em></h4>
+<h4><em>Go back to the <a href="/garages">Garages</a> homepage!</em></h4>

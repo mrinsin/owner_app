@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @owner.full_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @owner.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @owner.password %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @owner.phone %>
+</p>
+
+<p>
+  <strong>House(s):</strong>
+  <% @owner.houses.each do |house| %>
+  <%= house.address %><br>
+  <% end %>
+</p>
+
+<p>
+  <strong>Car(s):</strong>
+  <ul>
+    <% @owner.cars.each do |car| %>
+      <li><a href="/cars/<%= car.id %>"><%= car.make %></a></li>
+    <% end %>
+  </ul>
+</p>
+
+
+<%= link_to 'Edit', edit_owner_path(@owner) %> |
+<%= link_to 'Back', owners_path %>

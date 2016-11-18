@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Garages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Space number</th>
+      <th>House</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @garages.each do |garage| %>
+      <tr>
+        <td><%= garage.space_number %></td>
+        <td>
+          <a href="/houses/<%= garage.house.id%>">
+            <%= garage.house.address %>
+          </a>
+        </td>
+        <td><%= link_to 'Edit', edit_garage_path(garage) %></td>
+        <td><%= link_to 'Destroy', garage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Garage', new_garage_path %>
+
+
+
+<h4><em>Go back to the <a href="/">Owners</a> homepage!</em></h4>
+<h4><em>Go back to the <a href="/houses">Houses</a> homepage!</em></h4>
+<h4><em>Go back to the <a href="/cars">Cars</a> homepage!</em></h4>
