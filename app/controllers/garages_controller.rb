@@ -34,7 +34,12 @@ class GaragesController < ApplicationController
         format.html { redirect_to @garage, notice: 'Garage was successfully created.' }
         format.json { render :show, status: :created, location: @garage }
       else
-        format.html { render :new }
+        format.html {
+          @houses_for_select = House.all.map do |house|
+            [house.address, house.id]
+          end
+          render :new
+        }
         format.json { render json: @garage.errors, status: :unprocessable_entity }
       end
     end
